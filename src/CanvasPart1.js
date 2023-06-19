@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import "./CanvasPart1.css";
 
 const Canvas = (props) => {
   const canvasRef = useRef(null);
@@ -10,7 +11,7 @@ const Canvas = (props) => {
     }
     const ctx = canvas.getContext("2d");
 
-    canvas.width = 1000;
+    canvas.width = 1200;
     canvas.height = 500;
 
     // canvas settings
@@ -18,14 +19,15 @@ const Canvas = (props) => {
     ctx.strokeStyle = "white";
     ctx.lineWidth = 0.5;
     ctx.lineCap = "round";
+    ctx.letterSpacing = "50px";
 
     class Particle {
       constructor(effect) {
         this.effect = effect;
         this.x = Math.floor(Math.random() * this.effect.width);
         this.y = Math.floor(Math.random() * this.effect.height);
-        this.speedX;
-        this.speedY;
+        this.speedX = this.speedX;
+        this.speedY = this.speedY;
         this.speedModifier = Math.floor(Math.random() * 2 + 1);
         this.history = [{ x: this.x, y: this.y }];
         this.maxLength = Math.floor(Math.random() * 30 + 10);
@@ -114,8 +116,8 @@ const Canvas = (props) => {
         this.particles = [];
         this.numberOfParticles = 6000;
         this.cellSize = 5;
-        this.rows;
-        this.cols;
+        this.rows = this.rows;
+        this.cols = this.cols;
         this.flowField = [];
         this.curve = 2;
         this.zoom = 0.11;
@@ -196,7 +198,6 @@ const Canvas = (props) => {
           this.width,
           this.height
         ).data;
-        console.log(pixels);
         for (let y = 0; y < this.height; y += this.cellSize) {
           for (let x = 0; x < this.width; x += this.cellSize) {
             const index = (y * this.width + x) * 4;
